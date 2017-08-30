@@ -1,0 +1,10 @@
+<script>
+$(document).ready(function(){
+    navigator.geolocation.getCurrentPosition(redirect_with_position);
+})
+function redirect_with_position(position){
+    window.location = "/?lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
+}
+</script>
+
+Please allow the website to access your location.
