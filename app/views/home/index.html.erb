@@ -11,6 +11,14 @@ Long: <%= @data[:longitude] %>
 <hr />
 <%= render partial: 'nasa_data' %>
 <hr />
+<%= render partial: 'park_whiz_data' %>
+<hr />
+<%= render partial: 'google_data' %>
+<hr />
+<%= render partial: 'nearby_places' %>
+<hr />
+<br />
+Elevation: <%= @data[:elevation] %> meters above sea level
 <br />
 You appear to be at IP Address: <%= @data[:ip_address] %>, your internet provider appears to be <%= @data[:internet_provider] %>
 <br />
@@ -25,3 +33,4 @@ You <%= @data[:on_water] ? "are" : "are not" %> on water
     Happy <%= @data[:holiday] %>!
     <br />
 <% end %>
+<%= render partial: 'ad' %>

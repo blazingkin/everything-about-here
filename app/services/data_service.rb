@@ -1,6 +1,21 @@
 class DataService
     include HTTParty
 
+    def setup
+        @data_sources = [
+            #OnWaterService.new,
+            #IPInfoService.new,
+            #IPSidekickService.new,
+            #CountryService.new,
+            #WeatherService.new,
+            #NASAService.new,
+            #ParkWhizService.new,
+            #GoogleMapEmbedService.new,
+            #GooglePlaceService.new
+            GoogleElevationService.new
+        ]
+    end
+
     def get_data(current_data)
         current_data
     end
@@ -12,13 +27,16 @@ class DataService
         current_data
     end
 
-    def self.get_data_from_services(current_data)
-        current_data = OnWaterService.new.get_data(current_data)
-        current_data = IPInfoService.new.get_data(current_data)
-        current_data = IPSidekickService.new.get_data(current_data)
-        current_data = CountryService.new.get_data(current_data)
-        current_data = WeatherService.new.get_data(current_data)
-        current_data = NASAService.new.get_data(current_data)
+    def get_data_from_services(current_data)
+        @data_sources.each do |service|
+            begin
+                current_data = service.get_data(current_data)
+            rescue Exception => e
+                # TODO log exception
+                p e
+            end
+        end
+        current_data
     end
 
 end

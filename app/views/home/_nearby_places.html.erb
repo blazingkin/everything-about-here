@@ -1,0 +1,10 @@
+<% if !@data[:google_places].blank? %>
+    <% @data[:google_places].each do |place| %>
+        <%= image_tag place['icon'] %>
+        <br />
+        <%= place['name'] %>
+        <br />
+        Open? <%= place['opening_hours'] %>
+        <br />
+    <% end %>
+<% end %>
