@@ -6,7 +6,7 @@ class HomeController < ApplicationController
             data = {}
             data[:latitude] = params[:lat]
             data[:longitude] = params[:long]
-            data[:ip_address] = request.ip
+            data[:ip_address] = Rails.env.development? ? '47.185.52.238' : request.ip
             @data = DataService.get_data_from_services(data)
         else
             render 'get_geo_data'

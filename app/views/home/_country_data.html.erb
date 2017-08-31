@@ -1,0 +1,17 @@
+<h2>
+Country Data
+</h2>
+<br />
+Country: <%= @data[:country] %> (<%= @data[:country_code] %>)
+<br />
+<%= image_tag @data[:flag_image], height: 50 %>
+<br />
+<br />
+Total Population: <%= @data[:country_population] %> people  
+<br />
+Land Area: <%= @data[:country_land_area] %> Sq. Kilometers
+<br />
+Bordering Countries: <%= @data[:country_borders] %>
+<br />
+International Calling Code: <%= @data[:country_extension] %>
+<br />
