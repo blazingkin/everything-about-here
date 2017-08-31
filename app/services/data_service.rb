@@ -18,6 +18,7 @@ class DataService
         current_data = IPSidekickService.new.get_data(current_data)
         current_data = CountryService.new.get_data(current_data)
         current_data = WeatherService.new.get_data(current_data)
+        current_data = NASAService.new.get_data(current_data)
     end
 
 end
