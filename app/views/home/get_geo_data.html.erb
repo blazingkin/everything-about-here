@@ -1,10 +1,44 @@
+<style>
+    body{
+        background-color: #CCCCCC;
+        color: #000000;
+    }
+
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .spinner {
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+</style>
+
 <script>
 $(document).ready(function(){
+    $('#loading').hide();
     navigator.geolocation.getCurrentPosition(redirect_with_position);
 })
 function redirect_with_position(position){
+    $('#request-geodata').hide();
+    $('#loading').show();
     window.location = "/?lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
 }
 </script>
 
-Please allow the website to access your location.
+<div id="request-geodata" class="text-center">
+    <h1>
+        Please allow the website to access your location.
+    </h1>
+</div>
+
+<div id="loading" style="display:flex;justify-content:center;align-items:center;">
+  <div class="glyphicon glyphicon-refresh spinner" style="font-size: 20em;"></div>
+  <div class="glyphicon glyphicon-map-marker spinner" style="font-size: 20em;"></div>
+</div>

@@ -23,7 +23,20 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'puma'
+
+# For making all those RESTful calls
 gem 'httparty'
+
+# For styling - I mean, what app doesn't need bootstrap
+gem 'bootstrap'
+gem 'bootstrap-glyphicons'
+
+# For neat weather icons
+gem 'weather-icons-rails'
+
+# For all of those units I've got to deal with
+gem 'ruby-units'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

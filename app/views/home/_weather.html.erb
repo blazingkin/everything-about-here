@@ -1,14 +1,59 @@
-<h2>
-Weather
-</h2>
-<br />
-<br />
-Current weather: <%= @data[:weather] %>
-<br />
-Temp / Pressure / Humidity: <%= @data[:weather_numeric] %>
-<br />
-Wind: <%= @data[:wind] %>
-<br />
-Rain: <%= @data[:rain] %>
-<br />
-Clouds: <%= @data[:cloud] %>
+<% if !@data[:weather].blank? %>
+    <h2>
+    Weather
+    </h2>
+    <br />
+    <% @data[:weather].each do |status| %>
+        <%= status['description'] %>
+        <!-- <%= get_weather_icon status['icon'] %> !-->
+    <% end %>
+    <br />
+    <div class="temperature text-center">
+        <div class="row">
+            <div class="col-12">
+            Low / Current / Hi
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <%= temperature_helper(@data[:weather_numeric]['temp_min']) %>
+            </div>
+            <div class="col-4">
+                <%= temperature_helper(@data[:weather_numeric]['temp']) %>
+            </div>
+            <div class="col-4">
+                <%= temperature_helper(@data[:weather_numeric]['temp_max']) %>
+            </div>
+        </div>
+    </div>
+    <div class="weather-misc text-center">
+        <div class="row">
+            <div class="col-3">
+                Pressure
+            </div>
+            <div class="col-3">
+                Humidity
+            </div>
+            <div class="col-3">
+                Visibility
+            </div>
+            <div class="col-3">
+                Cloud Cover
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <%= @data[:weather_numeric]['pressure'] %> hPa
+            </div>
+            <div class="col-3">
+                <%= @data[:weather_numeric]['humidity'] %> %
+            </div>
+            <div class="col-3">
+                <%= meter_to_km_mi(@data[:visibility]) %>
+            </div>
+            <div class="col-3">
+                <%= @data[:cloud]['all'] %> %
+            </div>
+        </div>
+    </div>
+<% end %>

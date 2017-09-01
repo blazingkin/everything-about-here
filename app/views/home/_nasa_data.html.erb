@@ -1,12 +1,14 @@
-<h2>
-NASA Data
-</h2>
-<br />
-Satelite Image
-<br />
-<%= image_tag @data[:nasa_img] %>
-<br />
-Image Date: <%= @data[:nasa_img_date] %>
-<br />
-Estimated Cloud Cover: <%= @data[:nasa_cloud_cover] %>
-<br />
+<% if !@data[:nasa_img].blank? %>
+    <div class="nasa-img center text-center">
+        <div class="row">
+            <div class="col-12">
+                <%= image_tag @data[:nasa_img] %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                NASA Image Taken <%= @data[:nasa_img_date] %>
+            </div>
+        </div>
+    </div>
+<% end %>

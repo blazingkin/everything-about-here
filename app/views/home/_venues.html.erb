@@ -1,0 +1,14 @@
+<% if !@data[:nearby_venues].blank? %>
+    <div class="venues">
+        <% @data[:nearby_venues].take(6).each do |venue| %>
+            <div class="row">
+                <div class="col-6">
+                    <%= venue['name'] %>
+                </div>
+                <div class="col-6">
+                    <%= ft_to_km_mi venue['distance'] %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>

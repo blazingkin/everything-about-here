@@ -11,8 +11,8 @@ class DataService
             #NASAService.new,
             #ParkWhizService.new,
             #GoogleMapEmbedService.new,
-            #GooglePlaceService.new
-            GoogleElevationService.new
+            #GooglePlaceService.new,
+            #GoogleElevationService.new
         ]
     end
 

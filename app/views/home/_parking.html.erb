@@ -1,0 +1,14 @@
+<% if !@data[:nearby_parking].blank? %>
+    <div class="parking">
+        <% @data[:nearby_parking].take(6).each do |venue| %>
+            <div class="row">
+                <div class="col-md-6">
+                    <%= link_to venue['location_name'], venue['parkwhiz_url'] %>
+                </div>
+                <div class="col-md-6">
+                    <%= ft_to_km_mi venue['distance'] %> - $<%= venue['price'] %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>

@@ -1,21 +1,43 @@
-It looks like you are at:
-<br />
-Lat: <%= @data[:latitude] %>
-<br />
-Long: <%= @data[:longitude] %>
-<br />
-<hr />
+<div class="page-header text-center big-font">
+    <div class="row">
+        <div class="col-4">
+            Latitude
+        </div>
+        <div class="col-4">
+            Everything About 
+            <% if @data[:city].blank? %>
+                Here
+            <% else %>
+                <%= @data[:city] %>
+            <% end %>
+        </div>
+        <div class="col-4">
+            Longitude
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <%= truncate(@data[:latitude], 4) %>
+        </div>
+        <div class="col-4">
+            <span class="glyphicon glyphicon-map-marker"></span>
+        </div>
+        <div class="col-4">
+            <%= truncate(@data[:longitude], 4) %>
+        </div>
+    </div>
+</div>
 <%= render partial: 'country_data' %>
 <hr />
 <%= render partial: 'weather' %>
 <hr />
 <%= render partial: 'nasa_data' %>
 <hr />
-<%= render partial: 'park_whiz_data' %>
-<hr />
 <%= render partial: 'google_data' %>
 <hr />
-<%= render partial: 'nearby_places' %>
+<%= render partial: 'venues' %>
+<hr />
+<%= render partial: 'parking' %>
 <hr />
 <br />
 Elevation: <%= @data[:elevation] %> meters above sea level
