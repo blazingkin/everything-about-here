@@ -3,16 +3,17 @@ class DataService
 
     def setup
         @data_sources = [
-            #OnWaterService.new,
-            #IPInfoService.new,
-            #IPSidekickService.new,
-            #CountryService.new,
-            #WeatherService.new,
-            #NASAService.new,
-            #ParkWhizService.new,
-            #GoogleMapEmbedService.new,
-            #GooglePlaceService.new,
-            #GoogleElevationService.new
+            GoogleGeocodingService.new,
+            OnWaterService.new,
+            IPInfoService.new,
+            IPSidekickService.new,
+            CountryService.new,
+            WeatherService.new,
+            NASAService.new,
+            ParkWhizService.new,
+            GoogleMapEmbedService.new,
+            GooglePlaceService.new,
+            GoogleElevationService.new
         ]
     end
 
@@ -22,7 +23,7 @@ class DataService
 
     def translate(current_data, from_service, translation_hash)
         translation_hash.each do |translated_key, service_key|
-            current_data[translated_key] = from_service[service_key]
+            current_data[translated_key] ||= from_service[service_key]
         end
         current_data
     end
@@ -34,6 +35,7 @@ class DataService
             rescue Exception => e
                 # TODO log exception
                 p e
+                p e.backtrace
             end
         end
         current_data

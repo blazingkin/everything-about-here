@@ -6,7 +6,6 @@ class WeatherService < DataService
         lon = current_data[:longitude]
         appid = ENV['OPEN_WEATHER_MAP_KEY']
         response = self.class.get("/weather?lat=#{lat}&lon=#{lon}&appid=#{appid}", {})
-        p response
         translate(current_data, response, {
             weather: "weather",
             weather_numeric: "main",

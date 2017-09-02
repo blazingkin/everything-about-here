@@ -1,0 +1,47 @@
+<div class="container geographic-data">
+    <div class="row">
+        <div class="col-12">
+            You are at <%= @data[:address] %> 
+            <% if !@data[:postal_code].blank? %>
+                (Postal Code <%= @data[:postal_code] %>)
+            <% end %>
+        </div>
+    </div>
+    <% if !@data[:area_data].blank? %>
+        <div class="row">
+            <% @data[:area_data].each do |thing| %>
+                <div class="col-<%= size_for_n_elements(@data[:area_data].count) %>">
+                    <%= thing %>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+    <div class="row">
+        <div class="col-4">
+            Elevation: <%= meter_to_km_mi(@data[:elevation]) %>
+        </div>
+        <div class="col-4">
+            You <%= @data[:on_water] ? "are" : "are not" %> on water
+        </div>
+        <div class="col-4">
+            Precision: <%= precision_helper @data[:address_type] %>
+        </div>
+    </div>
+    <% if !@data[:time_zone].blank? %>
+    <div class="row">
+        <div class="col-6">
+            Time zone: <%= @data[:time_zone] %>
+        </div>
+        <div class="col-6">
+            Offset: <%= @data[:time_zone_offset] %>
+        </div>
+    </div>
+    <% end %>
+    <% if !@data[:holiday].blank? %>
+        <div class="row">
+            <div class="col-12">
+                Happy <%= @data[:holiday] %>!
+            </div>
+        </div>
+    <% end %>
+</div>

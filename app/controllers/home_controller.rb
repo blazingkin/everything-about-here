@@ -10,6 +10,7 @@ class HomeController < ApplicationController
             @service = DataService.new
             @service.setup
             @data = @service.get_data_from_services(data)
+            p @data
         else
             render 'get_geo_data'
         end

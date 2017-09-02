@@ -27,6 +27,8 @@
         </div>
     </div>
 </div>
+<%= render partial: 'geographic_data' %>
+<hr />
 <%= render partial: 'country_data' %>
 <hr />
 <%= render partial: 'weather' %>
@@ -40,19 +42,8 @@
 <%= render partial: 'parking' %>
 <hr />
 <br />
-Elevation: <%= @data[:elevation] %> meters above sea level
-<br />
 You appear to be at IP Address: <%= @data[:ip_address] %>, your internet provider appears to be <%= @data[:internet_provider] %>
 <br />
 Your IP coordinates put you at <%= @data[:ip_coords] %>, that has area code <%= @data[:ip_area_code] %>
 <br />
-You are in the <%= @data[:time_zone] %> time zone (<%= @data[:time_zone_offset] %>)
-<br />
-You <%= @data[:on_water] ? "are" : "are not" %> on water
-<br />
-<% if !@data[:holiday].blank? %>
-    <br />
-    Happy <%= @data[:holiday] %>!
-    <br />
-<% end %>
 <%= render partial: 'ad' %>

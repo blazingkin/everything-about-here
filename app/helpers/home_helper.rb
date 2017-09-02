@@ -46,6 +46,7 @@ module HomeHelper
     end
 
     def temperature_helper(temp)
+        return "" if temp.blank?
         tempK = "#{temp} tempK".to_unit
         tempC = truncate(tempK.convert_to('tempC').scalar, 2)
         tempF = truncate(tempK.convert_to('tempF').scalar, 2)
@@ -53,6 +54,7 @@ module HomeHelper
     end
 
     def meter_to_km_mi(met)
+        return "" if met.blank?
         meter = "#{met} meter".to_unit
         ki = truncate(meter.convert_to('kilometer').scalar, 2)
         mi = truncate(meter.convert_to('mile').scalar, 2)
@@ -60,10 +62,29 @@ module HomeHelper
     end
 
     def ft_to_km_mi(ft)
+        return "" if ft.blank?
         feet = "#{ft} feet".to_unit
         km = truncate(feet.convert_to('kilometer').scalar, 2)
         mi = truncate(feet.convert_to('mile').scalar, 2)
         "#{km} km / #{mi} mi"
+    end
+
+    def size_for_n_elements(n)
+        return 0 if n == 0
+        (12/n).floor
+    end
+
+    def precision_helper(type)
+        case type
+            when 'ROOFTOP'
+                'Precise'
+            when 'RANGE_INTERPOLATED'
+                'Approximate'
+            when 'GEOMETRIC_CENTER'
+                'Approximate'
+            when 'APPROXIMATE'
+                'Approximate'
+        end
     end
 
 end
