@@ -13,37 +13,67 @@
             <% end %>
         </div>
     <% end %>
+    <br />
     <div class="row text-center">
-        <div class="col-4">
-            Elevation: <%= meter_to_km_mi(@data[:elevation]) %>
+        <div class="col-6">
+            Latitude: <%= truncate(@data[:latitude], 4) %>
         </div>
-        <div class="col-4">
-            You <%= @data[:on_water] ? "are" : "are not" %> on water
-        </div>
-        <div class="col-4">
-            Precision: <%= precision_helper @data[:address_type] %>
+        <div class="col-6">
+            Longitude: <%= truncate(@data[:longitude], 4) %>
         </div>
     </div>
-    <% if !@data[:time_zone].blank? %>
-        <div class="row">
-            <div class="col-4">
-                Time zone: <%= @data[:time_zone] %>
+    <br />
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            <div class="row">
+                <div class="col-12">
+                Elevation: <%= meter_to_km_mi(@data[:elevation]) %>
+                </div>
             </div>
-            <div class="col-8">
-                Offset: <%= @data[:time_zone_offset] %>
+            <div class="row">
+                <div class="col-12">
+                You <%= @data[:on_water] ? "are" : "are not" %> on water
+                </div>
             </div>
+            <% if !@data[:address_type].blank? %>
+                <div class="row">
+                    <div class="col-12">
+                    Precision: <%= precision_helper @data[:address_type] %>
+                    </div>
+                </div>
+            <% end %>
+            <br />
         </div>
-    <% end %>
-    <% if !@data[:ip_address].blank? %>
-        <div class="row">
-            <div class="col-4">
-                IP Address: <%= @data[:ip_address] %>
+        <div class="col-md-4 col-sm-12">
+        <% if !@data[:time_zone].blank? %>
+            <div class="row">
+                <div class="col-12">
+                    Time zone: <%= @data[:time_zone] %>
+                </div>
             </div>
-            <div class="col-8">
-                Internet Provider: <%= @data[:internet_provider] %>
+            <div class="row">
+                <div class="col-8">
+                    Offset: <%= @data[:time_zone_offset] %>
+                </div>
             </div>
+            <br />
+        <% end %>
         </div>
-    <% end %>
+        <div class="col-md-4 col-sm-12">
+        <% if !@data[:ip_address].blank? %>
+            <div class="row">
+                <div class="col-12">
+                    IP Address: <%= @data[:ip_address] %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    Internet Provider: <%= @data[:internet_provider] %>
+                </div>
+            </div>
+        <% end %>
+        </div>
+    </div>
     <% if !@data[:holiday].blank? %>
         <div class="row">
             <div class="col-12">
