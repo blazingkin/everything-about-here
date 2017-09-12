@@ -1,51 +1,55 @@
-<div class="page-header text-center big-font">
-    <div class="row">
-        <div class="col-4">
-            Latitude
+<div class="container-fluid">
+    <div class="page-header text-center big-font">
+        <div class="row">
+            <div class="col-4">
+                Latitude
+            </div>
+            <div class="col-4">
+                Everything About 
+                <% if @data[:city].blank? %>
+                    Here
+                <% else %>
+                    <%= @data[:city] %>
+                <% end %>
+            </div>
+            <div class="col-4">
+                Longitude
+            </div>
         </div>
-        <div class="col-4">
-            Everything About 
-            <% if @data[:city].blank? %>
-                Here
-            <% else %>
-                <%= @data[:city] %>
-            <% end %>
-        </div>
-        <div class="col-4">
-            Longitude
+        <div class="row">
+            <div class="col-4">
+                <%= truncate(@data[:latitude], 4) %>
+            </div>
+            <div class="col-4">
+                <span class="glyphicon glyphicon-map-marker"></span>
+            </div>
+            <div class="col-4">
+                <%= truncate(@data[:longitude], 4) %>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-4">
-            <%= truncate(@data[:latitude], 4) %>
+    <%= render partial: 'geographic_data' %>
+    <hr />
+    <%= render partial: 'weather' %>
+    <hr />
+    <div class="row text-center">
+        <div class="col-md-6 col-sm-12">
+            <%= render partial: 'google_data' %>
         </div>
-        <div class="col-4">
-            <span class="glyphicon glyphicon-map-marker"></span>
-        </div>
-        <div class="col-4">
-            <%= truncate(@data[:longitude], 4) %>
+        <div class="col-md-6 col-sm-12">
+            <%= render partial: 'nasa_data' %>
         </div>
     </div>
+    <hr />
+    <%= render partial: 'nearby_places' %>
+    <hr />
+    <%= render partial: 'country_data' %>
+    <!-- <hr />
+    <%= render partial: 'venues' %>
+    <hr />
+    <%= render partial: 'parking' %>
+    <hr />
+    !-->
+    <hr />
+    <%= render partial: 'ad' %>
 </div>
-<%= render partial: 'geographic_data' %>
-<hr />
-<%= render partial: 'country_data' %>
-<hr />
-<%= render partial: 'weather' %>
-<hr />
-<%= render partial: 'nasa_data' %>
-<hr />
-<%= render partial: 'google_data' %>
-<hr />
-<%= render partial: 'nearby_places' %>
-<hr />
-<%= render partial: 'venues' %>
-<hr />
-<%= render partial: 'parking' %>
-<hr />
-<br />
-You appear to be at IP Address: <%= @data[:ip_address] %>, your internet provider appears to be <%= @data[:internet_provider] %>
-<br />
-Your IP coordinates put you at <%= @data[:ip_coords] %>, that has area code <%= @data[:ip_area_code] %>
-<br />
-<%= render partial: 'ad' %>

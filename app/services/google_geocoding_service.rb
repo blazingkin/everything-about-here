@@ -8,7 +8,7 @@ class GoogleGeocodingService < DataService
         lng = current_data[:longitude]
         short_lat = lat&.to_f&.round(3)
         short_lon = lng&.to_f&.round(3)
-        response = Rails.cache.fetch("geocoding/#{short_lat},#{short_lon}", :expires => 5.days) do
+        response = Rails.cache.fetch("geocoding/#{short_lat},#{short_lon}", expires_in: 2.weeks) do
             self.class.get("/json?latlng=#{lat},#{lng}&key=#{ENV['GOOGLE_SERVICE_KEY']}").parsed_response
         end
         first_result = response['results'].first

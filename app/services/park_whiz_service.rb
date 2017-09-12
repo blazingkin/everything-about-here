@@ -6,11 +6,11 @@ class ParkWhizService < DataService
         lng = current_data[:longitude]
         short_lat = lat&.to_f&.round(3)
         short_lon = lng&.to_f&.round(3)
-        venue_response = Rails.cache.fetch("parkwhiz_venue/#{short_lat},#{short_lon}", :expires => 1.day) do
+        venue_response = Rails.cache.fetch("parkwhiz_venue/#{short_lat},#{short_lon}", expires_in: 1.day) do
             self.class.get("/venue/search/?lat=#{lat}&lng=#{lng}&key=#{ENV['PARK_WHIZ_KEY']}").parsed_response
         end
         current_data[:nearby_venues] = venue_response
-        parking_response = Rails.cache.fetch("parkwhiz_parking/#{short_lat},#{short_lon}", :expires => 1.day) do
+        parking_response = Rails.cache.fetch("parkwhiz_parking/#{short_lat},#{short_lon}", expires_in: 1.day) do
             self.class.get("/search/?lat=#{lat}&lng=#{lng}&key=#{ENV['PARK_WHIZ_KEY']}").parsed_response
         end
         current_data[:nearby_parking] = parking_response["parking_listings"]

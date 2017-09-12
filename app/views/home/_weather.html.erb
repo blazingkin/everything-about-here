@@ -3,10 +3,12 @@
     Weather
     </h2>
     <br />
-    <% @data[:weather].each do |status| %>
-        <%= status['description'] %>
-        <%= get_weather_icon status['icon'] %>
-    <% end %>
+    <div class="text-center">
+        <% @data[:weather].each do |status| %>
+            <%= status['description'] %>
+           <!-- <%= get_weather_icon status['icon'] %> !-->
+        <% end %>
+    </div>
     <br />
     <div class="temperature text-center">
         <div class="row">

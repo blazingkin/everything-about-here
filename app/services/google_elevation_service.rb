@@ -6,7 +6,7 @@ class GoogleElevationService < DataService
         lon = current_data[:longitude]
         short_lat = lat&.to_f&.round(3)
         short_lon = lon&.to_f&.round(3)
-        response = Rails.cache.fetch("elevation/#{short_lat},#{short_lon}", :expires => 5.days) do
+        response = Rails.cache.fetch("elevation/#{short_lat},#{short_lon}", expires_in: 2.weeks) do
             self.class.get("/json?key=#{ENV['GOOGLE_SERVICE_KEY']}&locations=#{lat},#{lon}").parsed_response
         end
         current_data[:elevation] = response['results'].first['elevation']

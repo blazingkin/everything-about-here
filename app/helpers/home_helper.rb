@@ -26,6 +26,20 @@ module HomeHelper
         return "unknown"
     end
 
+    def price_level_tag(place)
+        price_level = place['price_level']
+        '$' * price_level unless price_level.blank?
+    end
+
+    def rating_tag(place)
+        rating = place['rating']&.to_i
+        '★' * rating unless rating.blank?
+    end
+
+    def array_list_format(arr)
+        arr.inject("") { |a, b| a + b.to_s + ", " }.chomp(', ')
+    end
+
     def truncate(number, length)
         number.to_f.round(length)
     end

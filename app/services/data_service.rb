@@ -10,7 +10,7 @@ class DataService
             CountryService.new,
             WeatherService.new,
             NASAService.new,
-            ParkWhizService.new,
+            #ParkWhizService.new,
             GoogleMapEmbedService.new,
             GooglePlaceService.new,
             GoogleElevationService.new

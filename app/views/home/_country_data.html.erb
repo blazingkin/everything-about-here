@@ -1,17 +1,19 @@
-<h2>
-Country Data
-</h2>
-<br />
-Country: <%= @data[:country] %> (<%= @data[:country_code] %>)
-<br />
-<%= image_tag @data[:flag_image], height: 50 %>
-<br />
-<br />
-Total Population: <%= @data[:country_population] %> people  
-<br />
-Land Area: <%= @data[:country_land_area] %> Sq. Kilometers
-<br />
-Bordering Countries: <%= @data[:country_borders] %>
-<br />
-International Calling Code: <%= @data[:country_extension] %>
-<br />
+<% if !@data[:country].blank? %>
+    <div class="text-center">
+        <h2>
+            <%= @data[:country] %> (<%= @data[:country_code] %>)
+        </h2>
+        <br />
+        <%= image_tag @data[:flag_image], height: 50 %>
+        <br />
+        <br />
+        Total Population: <%= @data[:country_population] %> people  
+        <br />
+        Land Area: <%= @data[:country_land_area] %> Sq. Kilometers
+        <br />
+        Bordering Countries: <%= array_list_format(@data[:country_borders]) %>
+        <br />
+        International Calling Code: <%= array_list_format(@data[:country_extension]) %>
+        <br />
+    </div>
+<% end %>
