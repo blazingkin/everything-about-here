@@ -2,8 +2,8 @@ class NASAService < DataService
     base_uri 'https://api.nasa.gov/planetary/earth'
 
     def get_data(current_data)
-        lat = current_data[:latitude]&.to_f&.round(3)
-        lon = current_data[:longitude]&.to_f&.round(3)
+        lat = current_data[:latitude]&.to_f&.round(4)
+        lon = current_data[:longitude]&.to_f&.round(4)
         images = Rails.cache.fetch("nasa_planetary/#{lat},#{lon}", :expires => 5.days) do
             self.class.get("/assets?lat=#{lat}&lon=#{lon}&api_key=#{ENV['NASA_KEY']}").parsed_response
         end

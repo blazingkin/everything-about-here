@@ -29,6 +29,8 @@ class DataService
     end
 
     def get_data_from_services(current_data)
+        current_data[:short_lat] = current_data[:latitude]&.to_f&.round(3)
+        current_data[:short_lon] = current_data[:longitude]&.to_f&.round(3)
         @data_sources.each do |service|
             begin
                 current_data = service.get_data(current_data)

@@ -1,5 +1,31 @@
 module HomeHelper
 
+    RAD_PER_DEG = Math::PI / 180
+    RM = 6371000 # Earth radius in meters
+    
+    def distance_between_in_m(lat1, lon1, lat2, lon2)
+      lat1_rad, lat2_rad = lat1 * RAD_PER_DEG, lat2 * RAD_PER_DEG
+      lon1_rad, lon2_rad = lon1 * RAD_PER_DEG, lon2 * RAD_PER_DEG
+    
+      a = Math.sin((lat2_rad - lat1_rad) / 2) ** 2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin((lon2_rad - lon1_rad) / 2) ** 2
+      c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1 - a))
+    
+      RM * c # Delta in meters
+    end
+
+    def distance_to(current_data, lat, long)
+        lat1 = current_data[:latitude].to_f
+        lon1 = current_data[:longitude].to_f
+        meter_to_km_mi(distance_between_in_m(lat1, lon1, lat, long))
+    end
+
+    def distance_to_place(current_data, place)
+        lat = place.dig('geometry', 'location', 'lat')
+        lng = place.dig('geometry', 'location', 'lng')
+        return distance_to(current_data, lat, lng) unless lat.blank? || lng.blank?
+        return "unknown"
+    end
+
     def truncate(number, length)
         number.to_f.round(length)
     end
@@ -42,6 +68,14 @@ module HomeHelper
                 wi_icon('wi-day-fog')
             when '50n'
                 wi_icon('wi-night-fog')
+        end
+    end
+
+    def render_open_tag(place)
+        if place.dig("opening_hours", "open_now")
+            return "Open"
+        else
+            return ""
         end
     end
 

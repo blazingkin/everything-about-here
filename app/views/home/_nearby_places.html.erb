@@ -4,7 +4,9 @@
         <br />
         <%= place['name'] %>
         <br />
-        Open? <%= place['opening_hours'] %>
+        <%= render_open_tag(place) %>
+        <br />
+        <%= distance_to_place(@data, place) %> away
         <br />
     <% end %>
 <% end %>
