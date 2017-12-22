@@ -1,5 +1,7 @@
 class BroadbandMapService < DataService
 
+    #Documentation https://www.broadbandmap.gov/developer/api/demographics-api-by-coordinates
+
     base_uri 'https://www.broadbandmap.gov/broadbandmap/'
 
     def get_data(current_data)
