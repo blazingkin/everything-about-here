@@ -24,6 +24,7 @@ class LanguageService < DataService
         end
         current_data[:demographic_languages] = {}
         current_data[:demographic_languages]['English Only'] = extract_info(response, 2)
+        current_data[:demographic_languages]['English and Other at Home'] = extract_info(response, 3)
         current_data[:demographic_languages]['Spanish'] = extract_info(response, 4) unless extract_info(response, 4) == 0
         current_data[:demographic_languages]['Indo-European'] = extract_info(response, 5)
         current_data[:demographic_languages]['Asian and Pacific Island'] = extract_info(response, 6)
