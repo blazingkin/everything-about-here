@@ -1,0 +1,12 @@
+<span class="glyphicon glyphicon-usd" style="border: 0px; height: 32px; width: 32px;"></span>
+<h4>Income</h4>
+<br />
+<%= pie_chart(
+    {"< $25k" => @data[:income_less_than_25k],
+        "$25k - $50k" => @data[:income_less_than_50k],
+        "$50k - $100k" => @data[:income_less_than_100k],
+        "$100k - $200k" => @data[:income_less_than_200k],
+        "> $200k" => @data[:income_greater_than_200k]}) %>
+<br />
+<%= stat_with_title('Median Income', format_as_money(@data[:income_median])) %>
+<%= stat_with_title('In Poverty', as_percent(@data[:income_poverty])) %>
