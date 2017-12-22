@@ -13,7 +13,8 @@ class DataService
             #ParkWhizService.new,
             GoogleMapEmbedService.new,
             GooglePlaceService.new,
-            GoogleElevationService.new
+            GoogleElevationService.new,
+            BroadbandMapService.new
         ]
     end
 

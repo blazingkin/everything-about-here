@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+            <h2>Demographics</h2>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
+            <%= link_to image_tag("graduation_hat.png", border: 0, height: 32, width: 32) %>
+            <h4>Education</h4>
+            <br />
+            <%= stat_with_title('High School', as_percent(@data[:education_high_school_graduation])) %>
+            <%= stat_with_title('Bachelors', as_percent(@data[:education_bachelors_or_better])) %>
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
+            <span class="glyphicon glyphicon-usd" style="border: 0px; height: 32px; width: 32px;"></span>
+            <h4>Income</h4>
+            <br />
+            <%= pie_chart(
+                {"< $25k" => @data[:income_less_than_25k],
+                 "$25k - $50k" => @data[:income_less_than_50k],
+                 "$50k - $100k" => @data[:income_less_than_100k],
+                 "$100k - $200k" => @data[:income_less_than_200k],
+                 "> $200k" => @data[:income_greater_than_200k]}) %>
+            <br />
+            <%= stat_with_title('Median Income', format_as_money(@data[:income_median])) %>
+            <%= stat_with_title('In Poverty', as_percent(@data[:income_poverty])) %>
+        </div>
+    </div>
+</div>

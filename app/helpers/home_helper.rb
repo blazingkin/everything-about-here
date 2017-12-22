@@ -26,6 +26,14 @@ module HomeHelper
         return "unknown"
     end
 
+    def as_percent(num)
+        "#{(num * 100).to_s[0..4]}%"
+    end
+
+    def format_as_money(num)
+        number_to_currency(num)
+    end
+
     def price_level_tag(place)
         price_level = place['price_level']
         '$' * price_level unless price_level.blank?
@@ -37,7 +45,7 @@ module HomeHelper
     end
 
     def array_list_format(arr)
-        arr.inject("") { |a, b| a + b.to_s + ", " }.chomp(', ')
+        arr&.join(", ")
     end
 
     def truncate(number, length)
@@ -133,6 +141,10 @@ module HomeHelper
             when 'APPROXIMATE'
                 'Approximate'
         end
+    end
+
+    def stat_with_title(title, stat)
+        ('<div class="row"><div class="col-4">' + title + '</div><div class="col-8">' + stat + '</div></div>').html_safe
     end
 
 end

@@ -28,6 +28,8 @@ gem 'puma'
 # For making all those RESTful calls
 gem 'httparty'
 
+gem 'chartkick'
+
 # For styling - I mean, what app doesn't need bootstrap
 gem 'bootstrap'
 gem 'bootstrap-glyphicons'
