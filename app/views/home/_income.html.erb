@@ -8,5 +8,15 @@
         "$100k - $200k" => @data[:income_less_than_200k],
         "> $200k" => @data[:income_greater_than_200k]}) %>
 <br />
-<%= stat_with_title('Median Income', format_as_money(@data[:income_median])) %>
-<%= stat_with_title('In Poverty', as_percent(@data[:income_poverty])) %>
+<div class="row">
+    <div class="col-6">
+        Median Income
+        <br />
+        <%= format_as_money(@data[:income_median]) %>
+    </div>
+    <div class="col-6">
+        In Poverty
+        <br />
+        <%= as_percent(@data[:income_poverty]) %>
+    </div>
+</div>

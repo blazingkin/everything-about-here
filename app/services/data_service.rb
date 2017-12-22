@@ -16,6 +16,7 @@ class DataService
             GooglePlaceService.new,
             GoogleElevationService.new,
             BroadbandMapService.new,
+            DemographicsService.new,
             LanguageService.new
         ]
     end

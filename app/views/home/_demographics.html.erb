@@ -6,6 +6,33 @@
     </div>
     <br />
     <br />
+    <% if service_succeeded? @data, DemographicsService %>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
+                <h4>Race</h4>
+                <%= pie_chart(@data[:demographic_races]) %>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
+                <h4>Sex</h4>
+                <%= pie_chart(@data[:demographic_sex]) %>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-6">
+                Median Age
+                <br />
+                <%= @data[:demographic_median_age] %>
+            </div>
+            <div class="col-6">
+                Average Family Size
+                <br />
+                <%= @data[:demographic_family_size] %>
+            </div>
+        </div>
+    <% end %>
+    <br />
+    <br />
     <div class="row">
         <% if service_succeeded? @data, LanguageService %>
             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">

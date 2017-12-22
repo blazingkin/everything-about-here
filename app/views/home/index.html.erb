@@ -23,6 +23,10 @@
         <%= render partial: 'weather' %>
         <hr />
     <% end %>
+    <% if service_succeeded? @data, BroadbandMapService %>
+        <%= render partial: 'demographics' %>
+        <hr />
+    <% end %>
     <div class="row text-center">
         <% if service_succeeded? @data, NASAService %>
             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -38,10 +42,6 @@
         <% end %>
     </div>
     <hr />
-    <% if service_succeeded? @data, BroadbandMapService %>
-        <%= render partial: 'demographics' %>
-        <hr />
-    <% end %>
     <% if service_succeeded? @data, GooglePlaceService %>
         <%= render partial: 'nearby_places' %>
         <hr />

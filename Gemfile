@@ -35,7 +35,8 @@ gem 'bootstrap'
 gem 'bootstrap-glyphicons'
 
 # For neat weather icons
-gem 'weather-icons-rails'
+#gem 'weather-icons-rails'
+#gem 'weather-icons-for-rails'
 
 # For all of those units I've got to deal with
 gem 'ruby-units'
