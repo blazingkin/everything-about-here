@@ -19,28 +19,36 @@
     </div>
     <%= render partial: 'geographic_data' %>
     <hr />
-    <%= render partial: 'weather' %>
-    <hr />
+    <% if service_succeeded? @data, WeatherService %>
+        <%= render partial: 'weather' %>
+        <hr />
+    <% end %>
     <div class="row text-center">
-        <div class="col-md-6 col-sm-12">
-            <%= render partial: 'google_data' %>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <%= render partial: 'nasa_data' %>
-        </div>
+        <% if service_succeeded? @data, NASAService %>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <%= render partial: 'google_data' %>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <%= render partial: 'nasa_data' %>
+            </div>
+        <% else %>
+            <div class="col-12">
+                <%= render partial: 'google_data' %>
+            </div>
+        <% end %>
     </div>
     <hr />
-    <%= render partial: 'demographics' %>
-    <hr />
-    <%= render partial: 'nearby_places' %>
-    <hr />
-    <%= render partial: 'country_data' %>
-    <!-- <hr />
-    <%= render partial: 'venues' %>
-    <hr />
-    <%= render partial: 'parking' %>
-    <hr />
-    !-->
-    <hr />
+    <% if service_succeeded? @data, BroadbandMapService %>
+        <%= render partial: 'demographics' %>
+        <hr />
+    <% end %>
+    <% if service_succeeded? @data, GooglePlaceService %>
+        <%= render partial: 'nearby_places' %>
+        <hr />
+    <% end %>
+    <% if service_succeeded? @data, CountryService %>
+        <%= render partial: 'country_data' %>
+        <hr />
+    <% end %>
     <%= render partial: 'ad' %>
 </div>

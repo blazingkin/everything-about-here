@@ -147,4 +147,8 @@ module HomeHelper
         ('<div class="row"><div class="col-4">' + title + '</div><div class="col-8">' + stat + '</div></div>').html_safe
     end
 
+    def service_succeeded?(data, service)
+        data[:successful_services].include? service
+    end
+
 end
