@@ -4,7 +4,7 @@ class DataService
     def setup
         @data_sources = [
             FccFipsService.new,
-        #    GoogleGeocodingService.new,
+            GoogleGeocodingService.new,
             OnWaterService.new,
             IPInfoService.new,
             IPSidekickService.new,
@@ -13,8 +13,8 @@ class DataService
             NASAService.new,
             #ParkWhizService.new,
             GoogleMapEmbedService.new,
-        #    GooglePlaceService.new,
-        #    GoogleElevationService.new,
+            GooglePlaceService.new,
+            GoogleElevationService.new,
             BroadbandMapService.new,
             LanguageService.new
         ]
