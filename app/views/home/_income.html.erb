@@ -6,17 +6,5 @@
         "$25k - $50k" => @data[:income_less_than_50k],
         "$50k - $100k" => @data[:income_less_than_100k],
         "$100k - $200k" => @data[:income_less_than_200k],
-        "> $200k" => @data[:income_greater_than_200k]}) %>
+        "> $200k" => @data[:income_greater_than_200k]}, height: '500px') %>
 <br />
-<div class="row">
-    <div class="col-6">
-        Median Income
-        <br />
-        <%= format_as_money(@data[:income_median]) %>
-    </div>
-    <div class="col-6">
-        In Poverty
-        <br />
-        <%= as_percent(@data[:income_poverty]) %>
-    </div>
-</div>

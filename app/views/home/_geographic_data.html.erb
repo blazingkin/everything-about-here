@@ -1,50 +1,42 @@
-<div class="container geographic-data">
+<div class="geographic-data">
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center bigtext">
             You are at <%= @data[:address] %> 
         </div>
     </div>
+    <br />
     <% if !@data[:area_data].blank? %>
         <div class="row text-center">
             <% @data[:area_data].each do |thing| %>
-                <div class="col-<%= size_for_n_elements(@data[:area_data].count) %>">
+                <div class="col-<%= size_for_n_elements(@data[:area_data].count) %> bigtext">
                     <%= thing %>
                 </div>
             <% end %>
         </div>
     <% end %>
     <br />
-    <div class="row text-center">
-        <div class="col-6">
-            Latitude: <%= truncate(@data[:latitude], 4) %>
-        </div>
-        <div class="col-6">
-            Longitude: <%= truncate(@data[:longitude], 4) %>
-        </div>
+    <div class="text-center bigtext">
+        <%= truncate(@data[:latitude], 4) %>, <%= truncate(@data[:longitude], 4) %>
     </div>
     <br />
-    <div class="row">
-        <div class="col-md-4 col-sm-12">
-            <div class="row">
-                <div class="col-12">
-                Elevation: <%= meter_to_km_mi(@data[:elevation]) %>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                You <%= @data[:on_water] ? "are" : "are not" %> on water
-                </div>
-            </div>
-            <% if !@data[:address_type].blank? %>
-                <div class="row">
-                    <div class="col-12">
-                    Precision: <%= precision_helper @data[:address_type] %>
-                    </div>
-                </div>
-            <% end %>
-            <br />
+    <div class="row bigtext text-center">
+        <div class="col-6">
+        Elevation: <%= meter_to_km_mi(@data[:elevation]) %>
+        </div>    
+        <div class="col-6">
+        You <%= @data[:on_water] ? "are" : "are not" %> on water
         </div>
-        <div class="col-md-4 col-sm-12">
+    </div>
+    <% if !@data[:address_type].blank? %>
+        <div class="row bigtext">
+            <div class="col-12">
+                Precision: <%= precision_helper @data[:address_type] %>
+            </div>
+        </div>
+    <% end %>
+      <!--
+        For some reason this isn't working anymore, I'll remove it for now, but it can be readded later
+        <div class="col-md-4 col-sm-12">  
         <% if !@data[:time_zone].blank? %>
             <div class="row">
                 <div class="col-12">
@@ -56,16 +48,17 @@
                     Offset: <%= @data[:time_zone_offset] %>
                 </div>
             </div>
-            <br />
+            <br /> 
         <% end %>
         </div>
-        <div class="col-md-4 col-sm-12">
+        <div class="col-md-6 col-sm-12">
         <% if !@data[:ip_address].blank? %>
             <div class="row">
                 <div class="col-12">
                     IP Address: <%= @data[:ip_address] %>
                 </div>
             </div>
+            <br />
             <div class="row">
                 <div class="col-12">
                     Internet Provider: <%= @data[:internet_provider] %>
@@ -74,8 +67,9 @@
         <% end %>
         </div>
     </div>
+    !-->
     <% if !@data[:holiday].blank? %>
-        <div class="row">
+        <div class="row titletext">
             <div class="col-12">
                 Happy <%= @data[:holiday] %>!
             </div>

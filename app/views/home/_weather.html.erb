@@ -1,15 +1,15 @@
 <% if !@data[:weather].blank? %>
-    <h2 class="text-center">
+    <h2 class="text-center titletext">
     Weather
     </h2>
     <br />
-    <div class="text-center">
+    <div class="text-center bigtext">
         <% @data[:weather].each do |status| %>
             <%= status['description'] %>
         <% end %>
     </div>
     <br />
-    <div class="temperature text-center">
+    <div class="temperature text-center bigtext">
         <div class="row">
             <div class="col-12">Low: <%= temperature_helper(@data[:weather_numeric]['temp_min']) %></div>
         </div>
@@ -20,7 +20,7 @@
             <div class="col-12">Hi: <%= temperature_helper(@data[:weather_numeric]['temp_max']) %></div>
         </div>
     </div>
-    <div class="weather-misc text-center">
+    <div class="weather-misc text-center bigtext">
         <div class="row">
             <div class="col-3">
                 Pressure

@@ -1,63 +1,75 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-            <h2>Demographics</h2>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 text-center titletext">
+        <h2>Demographics</h2>
+    </div>
+</div>
+<br />
+<br />
+<% if service_succeeded? @data, DemographicsService %>
+    <div class="row bigtext">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
+            <h4>Race</h4>
+            <%= pie_chart(@data[:demographic_races], height: '500px') %>
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
+            <h4>Sex</h4>
+            <%= pie_chart(@data[:demographic_sex], height: '500px') %>
         </div>
     </div>
     <br />
-    <br />
-    <% if service_succeeded? @data, DemographicsService %>
-        <div class="row">
-            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
-                <h4>Race</h4>
-                <%= pie_chart(@data[:demographic_races]) %>
-            </div>
-            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
-                <h4>Sex</h4>
-                <%= pie_chart(@data[:demographic_sex]) %>
-            </div>
+    <div class="row">
+        <div class="col-6 bigtext">
+            Median Age
+            <br />
+            <%= @data[:demographic_median_age] %>
         </div>
-        <br />
-        <div class="row">
-            <div class="col-6">
-                Median Age
-                <br />
-                <%= @data[:demographic_median_age] %>
-            </div>
-            <div class="col-6">
-                Average Family Size
-                <br />
-                <%= @data[:demographic_family_size] %>
-            </div>
+        <div class="col-6 bigtext">
+            Average Family Size
+            <br />
+            <%= @data[:demographic_family_size] %>
+        </div>
+    </div>
+<% end %>
+<br />
+<br />
+<div class="row bigtext">
+    <% if service_succeeded? @data, LanguageService %>
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
+            <span class="glyphicon glyphicon-plane" style="border: 0px; height: 32px; width: 32px;"></span>
+            <h4>Languages (<%= @data[:language_level] %>)</h4>
+            <br />
+            <%= pie_chart(@data[:demographic_languages], height: '500px')%>
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
+            <%= render partial: 'income' %>
+        </div>
+    <% else %>
+        <div class="col-12 text-center">
+            <%= render partial: 'income' %>
         </div>
     <% end %>
-    <br />
-    <br />
-    <div class="row">
-        <% if service_succeeded? @data, LanguageService %>
-            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
-                <span class="glyphicon glyphicon-plane" style="border: 0px; height: 32px; width: 32px;"></span>
-                <h4>Languages (<%= @data[:language_level] %>)</h4>
-                <br />
-                <%= pie_chart(@data[:demographic_languages])%>
-            </div>
-            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-center">
-                <%= render partial: 'income' %>
-            </div>
-        <% else %>
-            <div class="col-12 text-center">
-                <%= render partial: 'income' %>
-            </div>
-        <% end %>
+</div>
+<div class="row bigtext">
+    <div class="col-6">
+        Median Income
+        <br />
+        <%= format_as_money(@data[:income_median]) %>
     </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <%= link_to image_tag("graduation_hat.png", border: 0, height: 32, width: 32) %>
-            <h4>Education</h4>
-            <br />
-            <%= stat_with_title('High School', as_percent(@data[:education_high_school_graduation])) %>
-            <%= stat_with_title('Bachelors', as_percent(@data[:education_bachelors_or_better])) %>
-            <br />
-        </div>
+    <div class="col-6">
+        In Poverty
+        <br />
+        <%= as_percent(@data[:income_poverty]) %>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 text-center bigtext">
+        <%= link_to image_tag("graduation_hat.png", border: 0, height: 64, width: 64) %>
+        <h4>Education</h4>
+        <br />
+        <%= stat_with_title('High School', as_percent(@data[:education_high_school_graduation])) %>
+        <%= stat_with_title('Bachelors', as_percent(@data[:education_bachelors_or_better])) %>
+        <br />
     </div>
 </div>

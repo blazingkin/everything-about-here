@@ -1,8 +1,8 @@
 <% content_for(:title, @data[:city].blank? ? 'Here' : @data[:city]) %>
 <div class="container-fluid">
-    <div class="page-header text-center big-font">
+    <div class="page-header text-center">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 titletext">
                 Everything About 
                 <% if @data[:city].blank? %>
                     Here
@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <span class="glyphicon glyphicon-map-marker"></span>
+                <span class="glyphicon glyphicon-map-marker" style="font-size: 75px;"></span>
             </div>
         </div>
     </div>
@@ -46,6 +46,19 @@
         <%= render partial: 'nearby_places' %>
         <hr />
     <% end %>
+    <div class="bigtext">
+        <h2 class="titletext text-center">Internet Connection</h2>
+        <br />
+        <div class="row">
+            <div class="col-6">
+                IP Address - <%= @data[:ip_address] %>
+            </div>
+            <div class="col-6">
+                Internet Provider - <%= @data[:internet_provider] %>
+            </div>
+        </div>
+    </div>
+    <hr />
     <% if service_succeeded? @data, CountryService %>
         <%= render partial: 'country_data' %>
         <hr />

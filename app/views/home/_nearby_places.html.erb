@@ -1,33 +1,31 @@
 <% if !@data[:google_places].blank? %>
-    <div class="container-fluid">
-        <% @data[:google_places].each_slice(3) do |place_slice| %>
-            <div class="row">
-                <% place_slice.each do |place| %>
-                    <div class="col-4">
-                        <div class="row">
-                            <div class="col-9"><b><%= place['name'] %></b></div>
-                            <div class="col-3"><%= image_tag place['icon'], style: 'width: 2em;' %></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <%= distance_to_place(@data, place) %> away
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">
-                                <%= render_open_tag(place) %>
-                            </div>
-                            <div class="col-4">
-                                <%= rating_tag(place) %>
-                            </div>
-                            <div class="col-4">
-                                <%= price_level_tag(place) %>
-                            </div>
+    <% @data[:google_places].each_slice(3) do |place_slice| %>
+        <div class="row bigtext">
+            <% place_slice.each do |place| %>
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col-9"><b><%= place['name'] %></b></div>
+                        <div class="col-3"><%= image_tag place['icon'], style: 'width: 2em;' %></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <%= distance_to_place(@data, place) %> away
                         </div>
                     </div>
-                <% end %>
-            </div>
-            <br />
-        <% end %>
-    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <%= render_open_tag(place) %>
+                        </div>
+                        <div class="col-4">
+                            <%= rating_tag(place) %>
+                        </div>
+                        <div class="col-4">
+                            <%= price_level_tag(place) %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <br />
+    <% end %>
 <% end %>
