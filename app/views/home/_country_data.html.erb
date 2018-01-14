@@ -1,10 +1,10 @@
 <% if !@data[:country].blank? %>
-    <div class="text-center">
-        <h2>
+    <div class="text-center bigtext">
+        <h2 class="titletext">
             <%= @data[:country] %> (<%= @data[:country_code] %>)
         </h2>
         <br />
-        <%= image_tag @data[:flag_image], height: 50 %>
+        <%= image_tag @data[:flag_image], height: 200 %>
         <br />
         <br />
         Total Population: <%= @data[:country_population] %> people  
