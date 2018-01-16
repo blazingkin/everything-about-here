@@ -16,16 +16,35 @@
 @import 'bootstrap';
 @import 'bootstrap/glyphicons';
 
-.titletext {
-    font-size: 50px;
-    h2 {
-        font-size: 50px;
+
+@media (max-width: 1030px){
+    .titletext {
+        font-size: 5vw;
+        h2 {
+            font-size: 5vw;
+        }
+    }
+
+    .bigtext {
+        font-size: 3vw;
+        h4 {
+            font-size: 5vw;
+        }
     }
 }
 
-.bigtext {
-    font-size: 35px;
-    h4 {
-        font-size: 50px;
+@media (min-width: 1031px){
+    .titletext {
+        font-size: 2vw;
+        h2 {
+            font-size: 2vw;
+        }
+    }
+
+    .bigtext {
+        font-size: 1vw;
+        h4 {
+            font-size: 2vw;
+        }
     }
 }
