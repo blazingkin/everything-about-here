@@ -13,4 +13,12 @@ class IPInfoService < DataService
         })
     end
 
+    def get_location(current_data)
+        response = Rails.cache.fetch("ipinfo/#{current_data[:ip_address]}", expires_in: 2.hours) do
+            self.class.get("/#{current_data[:ip_address]}", {}).parsed_response
+        end
+        current_data[:latitude] = response["loc"].split(",")[0].to_f
+        current_data[:longitude] = response["loc"].split(",")[1].to_f
+    end
+
 end

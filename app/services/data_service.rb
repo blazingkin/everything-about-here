@@ -21,6 +21,10 @@ class DataService
         ]
     end
 
+    def fetch_lat_long(current_data)
+        IPInfoService.new.get_location(current_data)
+    end
+
     def get_data(current_data)
         current_data
     end
