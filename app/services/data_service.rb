@@ -48,6 +48,8 @@ class DataService
                 # TODO log exception
                 p e
                 p e.backtrace
+		Rails.logger.debug(e)
+		Rails.logger.debug(e.backtrace)
             end
         end
         current_data
