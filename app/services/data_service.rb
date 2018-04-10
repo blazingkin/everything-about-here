@@ -7,7 +7,7 @@ class DataService
             GoogleGeocodingService.new,
             OnWaterService.new,
             IPInfoService.new,
-            IPSidekickService.new,
+            #IPSidekickService.new,
             CountryService.new,
             WeatherService.new,
             NASAService.new,
