@@ -23,7 +23,10 @@ class HomeController < ApplicationController
         @service.setup
         @service.fetch_lat_long(data)
         @data = @service.get_data_from_services(data)
-        render 'index'
+        respond_to do |format|
+            format.html { render 'index' }
+            format.json { @data.to_json }
+        end
     end
 
     private
