@@ -25,7 +25,7 @@ class HomeController < ApplicationController
         @data = @service.get_data_from_services(data)
         respond_to do |format|
             format.html { render 'index' }
-            format.json { @data.to_json }
+            format.json { render json: @data.to_json }
         end
     end
 
