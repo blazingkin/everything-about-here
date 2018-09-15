@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.7.1'
+gem 'rails', '~> 4.2.8'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -33,7 +33,7 @@ gem 'httparty'
 gem 'chartkick'
 
 # For styling - I mean, what app doesn't need bootstrap
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.1.2'
 gem 'bootstrap-glyphicons'
 
 # For neat weather icons

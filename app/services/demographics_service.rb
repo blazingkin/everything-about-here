@@ -1,10 +1,10 @@
 class DemographicsService < DataService
-    base_uri 'https://api.census.gov/data/2010/sf1'
+    base_uri 'https://api.census.gov/data/2010/dec/sf1'
 
     def get_data(current_data)
         lat = current_data[:latitude]&.to_f&.round(4)
         lon = current_data[:longitude]&.to_f&.round(4)
-        variables = "P0030002,P0030003,P0030004,P0030005,P0030006,P0030007,P0030008,P0120001,P0120002,P0130001,P0370001"
+        variables = "P003002,P003003,P003004,P003005,P003006,P003007,P003008,P012001,P012002,P013001,P037001"
         response = Rails.cache.fetch("demographics/#{current_data[:FIPS_state]},#{current_data[:FIPS_county]}", expires_in: 5.weeks) do
             self.class.get("?get=#{variables}&for=county:#{current_data[:FIPS_county]}&in=state:#{current_data[:FIPS_state]}&key=#{ENV['CENSUS_DATA_KEY']}").parsed_response
         end
