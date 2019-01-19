@@ -9,9 +9,9 @@ class FccFipsService < DataService
             self.class.get("?latitude=#{lat}&longitude=#{lon}&format=json").parsed_response
         end
         current_data[:FIPS] = response.dig('Block', 'FIPS')
-        current_data[:FIPS_state] = current_data[:FIPS].to_s[0..1].to_i
-        current_data[:FIPS_county] = current_data[:FIPS].to_s[2..4].to_i
-        current_data[:FIPS_tract] = current_data[:FIPS].to_s[5..11].to_i
+        current_data[:FIPS_state] = current_data[:FIPS].to_s[0..1]
+        current_data[:FIPS_county] = current_data[:FIPS].to_s[2..4]
+        current_data[:FIPS_tract] = current_data[:FIPS].to_s[5..11]
         current_data[:county] = response.dig('County', 'name')
         current_data[:state_abbreviation] = response.dig('State', 'code')
         current_data[:state] = response.dig('State', 'name')
