@@ -15,7 +15,7 @@ class DataService
             GoogleMapEmbedService.new,
             GooglePlaceService.new,
             GoogleElevationService.new,
-            BroadbandMapService.new,
+            #BroadbandMapService.new, Deprecated via https://www.fcc.gov/news-events/blog/2018/12/07/decommissioning-national-broadband-map-and-its-apis
             DemographicsService.new,
             LanguageService.new
         ]

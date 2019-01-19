@@ -1,3 +1,4 @@
+<% if service_succeeded? @data, BroadbandMapService %>
 <span class="glyphicon glyphicon-usd" style="border: 0px; height: 32px; width: 32px;"></span>
 <h4>Income</h4>
 <br />
@@ -8,3 +9,4 @@
         "$100k - $200k" => @data[:income_less_than_200k],
         "> $200k" => @data[:income_greater_than_200k]}, height: '500px') %>
 <br />
+<% end %>

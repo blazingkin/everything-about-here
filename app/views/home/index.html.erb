@@ -23,7 +23,7 @@
         <%= render partial: 'weather' %>
         <hr />
     <% end %>
-    <% if service_succeeded? @data, BroadbandMapService %>
+    <% if service_succeeded? @data, FccFipsService %>
         <%= render partial: 'demographics' %>
         <hr />
     <% end %>

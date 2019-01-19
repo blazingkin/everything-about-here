@@ -50,26 +50,28 @@
         </div>
     <% end %>
 </div>
-<div class="row bigtext">
-    <div class="col-6">
-        Median Income
-        <br />
-        <%= format_as_money(@data[:income_median]) %>
+<% if service_succeeded? @data, BroadbandMapService %>
+    <div class="row bigtext">
+        <div class="col-6">
+            Median Income
+            <br />
+            <%= format_as_money(@data[:income_median]) %>
+        </div>
+        <div class="col-6">
+            In Poverty
+            <br />
+            <%= as_percent(@data[:income_poverty]) %>
+        </div>
     </div>
-    <div class="col-6">
-        In Poverty
-        <br />
-        <%= as_percent(@data[:income_poverty]) %>
+    <br />
+    <div class="row">
+        <div class="col-md-12 text-center bigtext">
+            <%= link_to image_tag("graduation_hat.png", border: 0, height: 64, width: 64) %>
+            <h4>Education</h4>
+            <br />
+            <%= stat_with_title('High School', as_percent(@data[:education_high_school_graduation])) %>
+            <%= stat_with_title('Bachelors', as_percent(@data[:education_bachelors_or_better])) %>
+            <br />
+        </div>
     </div>
-</div>
-<br />
-<div class="row">
-    <div class="col-md-12 text-center bigtext">
-        <%= link_to image_tag("graduation_hat.png", border: 0, height: 64, width: 64) %>
-        <h4>Education</h4>
-        <br />
-        <%= stat_with_title('High School', as_percent(@data[:education_high_school_graduation])) %>
-        <%= stat_with_title('Bachelors', as_percent(@data[:education_bachelors_or_better])) %>
-        <br />
-    </div>
-</div>
+<% end %>
