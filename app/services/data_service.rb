@@ -3,7 +3,7 @@ class DataService
 
     def setup
         @data_sources = [
-            AirNowService.new
+            AirNowService.new,
             FccFipsService.new,
             GoogleGeocodingService.new,
             OnWaterService.new,
