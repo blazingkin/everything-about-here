@@ -1,0 +1,17 @@
+<% if !@data[:air_quality].blank? %>
+    <h2 class="text-center titletext">
+    Air Quality
+    </h2>
+    <br />
+    <div class="row">
+        <% @data[:air_quality].take(3).each do |day, quality| %>
+            <div class="text-center col-<%= size_for_n_elements(@data[:air_quality].take(3).count) %>">
+                <h4><%= date_to_relative_date(day) %></h4>
+                <br />
+                <% quality.each do |metric, values| %>
+                    <%= render partial: 'air_quality_bar', locals: {metric: metric, value: values[:aqi], human_readable: values[:human_readable_quality]} %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+<% end %>

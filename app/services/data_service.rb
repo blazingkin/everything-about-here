@@ -3,21 +3,22 @@ class DataService
 
     def setup
         @data_sources = [
-            FccFipsService.new,
-            GoogleGeocodingService.new,
-            OnWaterService.new,
-            IPInfoService.new,
+            AirNowService.new
+#            FccFipsService.new,
+#            GoogleGeocodingService.new,
+#            OnWaterService.new,
+#            IPInfoService.new,
             #IPSidekickService.new,
-            CountryService.new,
-            WeatherService.new,
-            NASAService.new,
+#            CountryService.new,
+#            WeatherService.new,
+#            NASAService.new,
             #ParkWhizService.new,
-            GoogleMapEmbedService.new,
-            GooglePlaceService.new,
-            GoogleElevationService.new,
+#            GoogleMapEmbedService.new,
+#            GooglePlaceService.new,
+#            GoogleElevationService.new,
             #BroadbandMapService.new, Deprecated via https://www.fcc.gov/news-events/blog/2018/12/07/decommissioning-national-broadband-map-and-its-apis
-            DemographicsService.new,
-            LanguageService.new
+#            DemographicsService.new,
+#            LanguageService.new
         ]
     end
 

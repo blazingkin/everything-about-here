@@ -23,6 +23,11 @@
         <%= render partial: 'weather' %>
         <hr />
     <% end %>
+    <% if service_succeeded? @data, AirNowService %>
+        <%= render partial: 'air_quality' %>
+        <hr />
+    <% end %>
+    
     <% if service_succeeded? @data, FccFipsService %>
         <%= render partial: 'demographics' %>
         <hr />

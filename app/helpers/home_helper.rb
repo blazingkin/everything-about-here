@@ -1,8 +1,11 @@
 module HomeHelper
+    require 'date'
 
     RAD_PER_DEG = Math::PI / 180
     RM = 6371000 # Earth radius in meters
     
+
+
     def distance_between_in_m(lat1, lon1, lat2, lon2)
       lat1_rad, lat2_rad = lat1 * RAD_PER_DEG, lat2 * RAD_PER_DEG
       lon1_rad, lon2_rad = lon1 * RAD_PER_DEG, lon2 * RAD_PER_DEG
@@ -149,6 +152,52 @@ module HomeHelper
 
     def service_succeeded?(data, service)
         data[:successful_services].include? service
+    end
+
+    # For example, convert 2019-07-09 to "yesterday"
+    def date_to_relative_date(date)
+        date = Date.parse(date)
+        if date == Date.today
+            "Today"
+        elsif date == Date.today - 1
+            "Yesterday"
+        elsif date == Date.today + 1
+            "Tomorrow"
+        else
+            date.strftime("%F")
+        end
+    end
+
+    def aqi_value_to_range(value)
+        if value <= 50
+            "Good"
+        elsif value <= 100
+            "Moderate"
+        elsif value <= 150
+            "Unhealthy-for-Sensitive-Groups"
+        elsif value <= 200
+            "Unhealthy"
+        elsif value <= 300
+            "Very-Unhealthy"
+        else
+            "Hazardous"
+        end
+    end
+
+    def translate_aqi_metric(name)
+        if name == "O3"
+            "Ozone"
+        elsif name == "NO2"
+            "Nitrous Oxide"
+        elsif name == "CO"
+            "Carbon Monoxide"
+        elsif name == "PM2.5"
+            "Fine Dust Particles"
+        elsif name == "PM10"
+            "Coarse Dust Particles"
+        else
+            name
+        end
     end
 
 end

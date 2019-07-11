@@ -7,3 +7,34 @@
 .big-font{
     font-size: 200%;
 }
+
+.aqi-color-Good {
+    background-color: green;
+}
+
+.aqi-color-Moderate {
+    background-color: yellow;
+}
+
+.aqi-color-Unhealthy-for-Sensitive-Groups {
+    background-color: orange;
+}
+
+.aqi-color-Unhealthy {
+    background-color: red;
+}
+
+.aqi-color-Very-Unhealthy {
+    background-color: purple;
+}
+
+.aqi-color-Hazardous {
+    background-color: maroon;
+}
+
+.aqi-bar-border {
+    border: 1px black solid;
+    padding-left: 0px !important;
+    margin-right: 5%;
+    margin-left: 5%;
+}
