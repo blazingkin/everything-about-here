@@ -6,7 +6,8 @@ class AirNowService < DataService
         lat = current_data[:latitude]&.to_f&.round(4)
         lon = current_data[:longitude]&.to_f&.round(4)
         response = Rails.cache.fetch("air-quality/#{lat},#{lon}", expires_in: 3.hours) do
-            response = self.class.get("?format=application/json&date=2019-07-09&latitude=#{lat}&longitude=#{lon}&distance=25&API_KEY=#{ENV['AIRNOW_KEY']}").parsed_response
+            current_time = Time.now.to_s.split(" ")[0]
+            response = self.class.get("?format=application/json&date=#{current_time}&latitude=#{lat}&longitude=#{lon}&distance=25&API_KEY=#{ENV['AIRNOW_KEY']}").parsed_response
         end
         current_data[:air_quality] = {}
         response.each do |data|

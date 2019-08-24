@@ -17,7 +17,7 @@
     <div class="col-md-4 col-lg-4 col-sm-0">
     </div>
     <div class="col-md-4 col-lg-4 col-sm-12 aqi-bar-border">
-        <div class="aqi-color-<%= aqi_value_to_range(value) %>" style="width: <%= (value.to_f / 500) * 100 %>%"><%= value %></div>
+        <div class="aqi-bar-filler aqi-color-<%= aqi_value_to_range(value) %>" style="width: <%= (value.to_f / 500) * 100 %>%"><%= value %></div>
     </div>
 </div>
 <br />
