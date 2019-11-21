@@ -33,7 +33,7 @@ gem 'httparty'
 gem 'chartkick'
 
 # For styling - I mean, what app doesn't need bootstrap
-gem 'bootstrap', '~> 4.1.2'
+gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-glyphicons'
 
 # For neat weather icons
