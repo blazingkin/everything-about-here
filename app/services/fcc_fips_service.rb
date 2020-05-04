@@ -5,9 +5,10 @@ class FccFipsService < DataService
     def get_data(current_data)
         lat = current_data[:latitude]&.to_f&.round(4)
         lon = current_data[:longitude]&.to_f&.round(4)
-        response = Rails.cache.fetch("language/#{lat},#{lon}", expires_in: 5.weeks) do
+        response = Rails.cache.fetch("fips/#{lat},#{lon}", expires_in: 5.weeks) do
             self.class.get("?latitude=#{lat}&longitude=#{lon}&format=json").parsed_response
         end
+        p response
         current_data[:FIPS] = response.dig('Block', 'FIPS')
         current_data[:FIPS_state] = current_data[:FIPS].to_s[0..1]
         current_data[:FIPS_county] = current_data[:FIPS].to_s[2..4]
