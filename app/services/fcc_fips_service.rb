@@ -1,12 +1,11 @@
 class FccFipsService < DataService
 
-    base_uri 'https://geo.fcc.gov/api/census/block/find'
 
     def get_data(current_data)
         lat = current_data[:latitude]&.to_f&.round(4)
         lon = current_data[:longitude]&.to_f&.round(4)
         response = Rails.cache.fetch("fips/#{lat},#{lon}", expires_in: 5.weeks) do
-            self.class.get("?latitude=#{lat}&longitude=#{lon}&format=json").parsed_response
+            HTTParty.get("https://geo.fcc.gov/api/census/block/find?latitude=#{lat}&longitude=#{lon}&format=json").parsed_response
         end
         p response
         current_data[:FIPS] = response.dig('Block', 'FIPS')
