@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-4 col-lg-4 col-sm-0">
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-12">
+    <div class="col-md-4 col-lg-4 col-sm-12" style="font-size: 1.5em;">
         <%= translate_aqi_metric(metric) %>
     </div>
 
@@ -16,8 +16,10 @@
 <div class="row">
     <div class="col-md-4 col-lg-4 col-sm-0">
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-12 aqi-bar-border">
-        <div class="aqi-bar-filler aqi-color-<%= aqi_value_to_range(value) %>" style="width: <%= (value.to_f / 500) * 100 %>%"><%= value %></div>
-    </div>
+    <% if value > 0 %>
+        <div class="col-md-4 col-lg-4 col-sm-12 aqi-bar-border">
+            <div class="aqi-bar-filler aqi-color-<%= aqi_value_to_range(value) %>" style="width: <%= (value.to_f / 500) * 100 %>%"><%= value %></div>
+        </div>
+    <% end %>
 </div>
 <br />
